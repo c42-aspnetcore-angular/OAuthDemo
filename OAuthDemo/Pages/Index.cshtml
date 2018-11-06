@@ -4,7 +4,28 @@
     ViewData["Title"] = "Home page";
 }
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+<div class="row">
+    <div class="col-md-12">
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <a asp-action="Login" asp-controller="Account" class="btn btn-default">Log In with GitHub</a>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="@Model.GitHubAvatar" alt="" class="img-thumbnail" />
+                </div>
+                <div class="col-md-10">
+                    <h4>@Model.GitHubName</h4>
+                    <p><i class="fab fa-github"></i><a href="@Model.GitHubUrl"></a></p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@*<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -93,4 +114,4 @@
             <li><a href="https://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure App Service</a></li>
         </ul>
     </div>
-</div>
+</div>*@
